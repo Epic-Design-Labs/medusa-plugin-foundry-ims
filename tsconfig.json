@@ -3,15 +3,16 @@
   "exclude": ["node_modules", ".medusa", "dist"],
   "compilerOptions": {
     "target": "ES2022",
-    "module": "Node16",
-    "moduleResolution": "Node16",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "outDir": "dist",
+    "outDir": ".medusa/server/src",
+    "rootDir": "src",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

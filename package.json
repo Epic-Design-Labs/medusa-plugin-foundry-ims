@@ -41,9 +41,9 @@
     "url": "https://github.com/Epic-Design-Labs/medusa-plugin-foundry-ims/issues"
   },
   "scripts": {
-    "build": "medusa plugin:build",
-    "dev": "medusa plugin:develop",
-    "prepublishOnly": "medusa plugin:build"
+    "build": "tsc -p tsconfig.json",
+    "prepack": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
   },
   "peerDependencies": {
     "@medusajs/framework": "^2.3.0",
