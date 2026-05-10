@@ -1,6 +1,6 @@
 {
-  "name": "@foundry-ims/medusa-plugin-foundry-ims",
-  "version": "0.1.0",
+  "name": "medusa-plugin-foundry-ims",
+  "version": "0.1.1",
   "description": "Foundry IMS integration for Medusa — push orders, inventory, and fulfillments to Foundry in real time.",
   "main": ".medusa/server/src/index.js",
   "types": ".medusa/server/src/index.d.ts",
