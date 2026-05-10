@@ -1,4 +1,4 @@
-# medusa-plugin-foundry-ims
+# @foundry-ims/medusa-plugin-foundry-ims
 
 Real-time integration between [Medusa](https://medusajs.com) and [Foundry IMS](https://foundryims.com). Pushes order, inventory, and fulfillment events from your Medusa store to Foundry the moment they happen — replaces polling with native Medusa event subscribers.
 
@@ -26,9 +26,9 @@ The plugin sends a thin event envelope (`{ topic, payload: { orderId } }`); Foun
 ## Install
 
 ```bash
-npm install medusa-plugin-foundry-ims
+npm install @foundry-ims/medusa-plugin-foundry-ims
 # or
-yarn add medusa-plugin-foundry-ims
+yarn add @foundry-ims/medusa-plugin-foundry-ims
 ```
 
 In your `medusa-config.ts`:
@@ -40,7 +40,7 @@ module.exports = defineConfig({
   // ...your existing config...
   plugins: [
     {
-      resolve: "medusa-plugin-foundry-ims",
+      resolve: "@foundry-ims/medusa-plugin-foundry-ims",
       options: {},
     },
   ],
@@ -75,7 +75,7 @@ curl -H "Authorization: Bearer $FOUNDRY_API_KEY" \
   "$FOUNDRY_API_URL/api/v1/orders?limit=5"
 ```
 
-You should see your order in the response. If not, check your Medusa logs for `[medusa-plugin-foundry-ims]` warnings — usually a missing env var.
+You should see your order in the response. If not, check your Medusa logs for `[@foundry-ims/medusa-plugin-foundry-ims]` warnings — usually a missing env var.
 
 ## Troubleshooting
 
@@ -85,7 +85,7 @@ The plugin couldn't find one or both required env vars. Double-check your `.env`
 **Orders aren't appearing in Foundry.**
 1. Confirm the API key is valid (curl test above).
 2. Confirm the channel ID matches the one shown in Foundry's URL.
-3. Check Medusa server logs for `[medusa-plugin-foundry-ims] post failed: ...`.
+3. Check Medusa server logs for `[@foundry-ims/medusa-plugin-foundry-ims] post failed: ...`.
 4. Confirm `orderSyncEnabled` is on for the Foundry channel (Foundry → Sales Channels → Medusa → Settings).
 
 **The plugin works but Foundry shows the wrong status / out-of-date inventory.**
