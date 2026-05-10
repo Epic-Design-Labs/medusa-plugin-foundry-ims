@@ -27,6 +27,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
 
+      - name: Upgrade npm
+        # Trusted Publisher OIDC support needs npm 11.5.1+. Node 20 ships
+        # with npm 10.x by default; upgrade explicitly so `npm publish`
+        # can authenticate via the GitHub Actions OIDC token configured
+        # in npm's Trusted Publisher settings.
+        run: npm install -g npm@latest
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -47,6 +54,8 @@ jobs:
         run: yarn build
 
       - name: Publish to npm
+        # Authenticates via GitHub Actions OIDC against npm's Trusted
+        # Publisher config — no NPM_TOKEN secret needed. Requires
+        # `id-token: write` permission set above and npm 11.5.1+ from
+        # the Upgrade npm step.
         run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
